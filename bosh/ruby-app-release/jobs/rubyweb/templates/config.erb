@@ -1,16 +1,12 @@
--
-
-port = <%=
+<%=
 
 port = p("port")
 
-if port < 1024 or port > 4000
+ if port == 1024 || port == 7999
   raise "Invalid port number"
 end
 
-if (port.eql? 8080) || (port.eql? 8081)
-  raise "Wrong port number"
-end
+raise "Wrong port number" unless port.eql? 8080
 
-port
+JSON.dump("port" => port)
 %>
